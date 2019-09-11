@@ -1,13 +1,17 @@
 import React from 'react';
+// import Head Component from components folder
 import Head from './components/Head';
+import PersonalGitCard from './components/UserCard';
 import './App.css';
-
+// set up class called App that extends React.Component
 class App extends React.Component{
+  // establish state to hold data
   state = {
     data: [],
     followers: []
   };
-
+  
+// CDM - fetch github personal data, set that data to state
   componentDidMount(){
     fetch('https://api.github.com/users/toosdaiotte')
       .then(res => res.json())
@@ -16,6 +20,7 @@ class App extends React.Component{
       .catch(err => console.log('BUG', err))
   }
 
+  // CDU - if personal data rendered, fetch personal users followers, set that data to state
   componentDidUpdate(prevState){
     if(this.state.data){
       fetch('https://api.github.com/users/toosdaiotte/followers')
@@ -26,18 +31,15 @@ class App extends React.Component{
     }
   }
 
-
+// Render/return jsx to DOM
   render(){
     return(
       <div className="App">
+        {/* import Head component to jsx */}
           <Head />
-          <img src={this.state.data.avatar_url} alt="Toosdai Otte" />
-          <h2>{this.state.data.name}</h2>
-          <p>{this.state.data.location}</p>
-          <a href={this.state.data.url}>{this.state.data.url}</a>
-          <p>Following: {this.state.data.following}</p>
-          <p>Followers: {this.state.data.followers}</p>
+          <PersonalGitCard data={this.state.data} />
 
+          {/* Map through and render jsx element for each this.state.followers */}
           <div className="followers">
             {this.state.followers.map(follower => {
               return(
@@ -55,4 +57,5 @@ class App extends React.Component{
   }
 }
 
+// export App component
 export default App;
