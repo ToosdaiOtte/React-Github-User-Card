@@ -34,12 +34,17 @@ function PersonalGitCard(props){
     }
 
     return(
-        <Card style={{width: '50%', margin: '0 auto'}}>
+        <div>
+        <h1>Github User: </h1>
+        <Card className="card">
             <div style={{margin: '0 auto'}}>
-            <CardHeader
-              title={props.data.name}
-            />
-            <CardMedia><img src={props.data.avatar_url} alt={props.data.name} /></CardMedia>
+                <div className="shown">
+                    <CardMedia ><img  src={props.data.avatar_url} alt={props.data.name} className="card-img"/></CardMedia>
+                    <CardHeader
+                        title={props.data.name}
+                    />     
+                </div>
+
             <CardActions disableSpacing>
               <IconButton
                 className={clsx(classes.expand, {
@@ -62,7 +67,7 @@ function PersonalGitCard(props){
             </Collapse>
           </div>  
           </Card>
-          
+        </div> 
     );
 }
 

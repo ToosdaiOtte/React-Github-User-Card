@@ -1,6 +1,7 @@
 import React from 'react';
-// import Head Component from components folder
+// import Head, FollowerCard, and PersonalGitCard Component from components folder
 import Head from './components/Head';
+import FollowerCard from './components/FollowerCard';
 import PersonalGitCard from './components/UserCard';
 import './App.css';
 // set up class called App that extends React.Component
@@ -36,22 +37,9 @@ class App extends React.Component{
     return(
       <div className="App">
         {/* import Head component to jsx */}
-          <Head />
-          <PersonalGitCard data={this.state.data} />
-
-          {/* Map through and render jsx element for each this.state.followers */}
-          <div className="followers">
-            {this.state.followers.map(follower => {
-              return(
-                <div>
-                  <img src={follower.avatar_url} alt={follower.name} />
-                  <h2>{follower.login}</h2>
-                  <a href={follower.url}>{follower.url}</a>
-                </div>
-              )
-            })}
-
-          </div>
+        <Head />
+        <PersonalGitCard data={this.state.data} />
+        <FollowerCard data={this.state.data} followers={this.state.followers} />
       </div>
     )
   }

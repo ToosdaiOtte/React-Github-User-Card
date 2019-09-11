@@ -64,3 +64,23 @@
 .header s {
   font-size: 4rem;
 }
+.card{
+  width: 60%;
+  margin: 0 auto;
+  padding: 0;
+  margin-bottom: 3%;
+}
+.shown{
+  display: flex;
+  justify-content: center;
+}
+.shown-right{
+  display: flex;
+  flex-direction: column;
+}
+.card-img{
+  width: 70%;
+  height: 100%; 
+  border-radius: 3px;
+  margin-right: 20px;
+}
